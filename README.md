@@ -2,6 +2,7 @@
 
 A modern, feature-rich Tic-Tac-Toe game built with **React**, **Socket.IO**, and **Tailwind CSS**. Play locally, challenge an AI, or compete with friends online in real-time multiplayer mode!
 
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Play_Now-success?style=for-the-badge)](https://tic-tac-toe-ultimate-five.vercel.app/)
 ![Tic-Tac-Toe](https://img.shields.io/badge/Game-Tic--Tac--Toe-blue?style=for-the-badge)
 ![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=for-the-badge&logo=react)
 ![Socket.IO](https://img.shields.io/badge/Socket.IO-4.8.1-010101?style=for-the-badge&logo=socket.io)
