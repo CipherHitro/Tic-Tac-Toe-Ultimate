@@ -1,0 +1,165 @@
+@import 'tailwindcss';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Clean, minimal animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+/* Backdrop blur fallback */
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-sm,
+  .backdrop-blur-md {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus-visible {
+  outline: 2px solid rgba(120, 119, 198, 0.5);
+  outline-offset: 2px;
+}
+
+/* X Animation - Tilting and sliding in */
+.x-animate {
+  animation: xTilt 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes xTilt {
+  0% {
+    opacity: 0;
+    transform: rotate(-20deg) scale(0.2) translateY(10px);
+  }
+  60% {
+    opacity: 0.9;
+    transform: rotate(8deg) scale(1.15) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1) translateY(0px);
+  }
+}
+
+/* O Animation - Pop up effect */
+.o-animate {
+  animation: oPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes oPop {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(180deg);
+  }
+  60% {
+    opacity: 0.9;
+    transform: scale(1.25) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Smooth transitions for game cells */
+.game-cell {
+  transition: all 0.2s ease;
+}
+
+/* Dancing animations for winning symbols */
+.x-dancing {
+  animation: xDance 1.2s ease-in-out infinite;
+}
+
+.o-dancing {
+  animation: oDance 1.2s ease-in-out infinite;
+}
+
+@keyframes xDance {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  15% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  30% {
+    transform: rotate(8deg) scale(0.95);
+  }
+  45% {
+    transform: rotate(-5deg) scale(1.05);
+  }
+  60% {
+    transform: rotate(3deg) scale(0.98);
+  }
+  75% {
+    transform: rotate(-2deg) scale(1.02);
+  }
+}
+
+@keyframes oDance {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  40% {
+    transform: scale(0.9) rotate(-8deg);
+  }
+  60% {
+    transform: scale(1.08) rotate(3deg);
+  }
+  80% {
+    transform: scale(0.96) rotate(-2deg);
+  }
+}
