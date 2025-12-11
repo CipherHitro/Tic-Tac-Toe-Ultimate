@@ -155,6 +155,37 @@ function App() {
       }, 2000)
     })
 
+    socketService.onError((data) => {
+      toast.error(data.message)
+      
+      // If game not found or game full, redirect to home
+      if (data.message === 'Game not found' || data.message === 'Game is full') {
+        setTimeout(() => {
+          setGameMode(GAME_MODES.LOCAL)
+          setGameId(null)
+          setIsHost(false)
+          setShowMultiplayerModal(false)
+          setShowNameInput(false)
+          setPlayerName('')
+          setOpponentName('')
+          setPlayerSymbol(null)
+          
+          // Reset MP state
+          setMpScores({ X: 0, O: 0 })
+          setMpBoard(Array(9).fill(null))
+          setMpWinner(null)
+          setMpWinningLine(null)
+          setMpIsDraw(false)
+          setMpCurrentPlayer('X')
+          setMpGameActive(false)
+          
+          setIsWaitingForOpponent(true)
+          window.history.pushState({}, '', window.location.pathname)
+          socketService.disconnect()
+        }, 2000)
+      }
+    })
+
     return () => {
       socketService.removeAllListeners()
     }

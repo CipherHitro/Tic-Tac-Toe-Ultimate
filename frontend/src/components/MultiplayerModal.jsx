@@ -26,11 +26,17 @@ function MultiplayerModal({ isOpen, onClose, gameId, isWaiting, opponentName, pl
         });
       } catch (err) {
         if (err.name !== 'AbortError') {
-          copyToClipboard();
+          toast.error('Could not share link', {
+            icon: '❌',
+            duration: 2000,
+          });
         }
       }
     } else {
-      copyToClipboard();
+      toast.error('Share not supported on this device', {
+        icon: '❌',
+        duration: 2000,
+      });
     }
   };
 
@@ -105,13 +111,13 @@ function MultiplayerModal({ isOpen, onClose, gameId, isWaiting, opponentName, pl
           )}
         </div>
 
-        {/* Game ID & Link */}
+        {/* Game Link */}
         {gameId && (
           <div className="space-y-4 mb-6">
             <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-              <p className="text-gray-400 text-xs mb-2 text-center">Game ID</p>
-              <p className="text-white font-mono text-lg font-bold text-center tracking-wider">
-                {gameId}
+              <p className="text-gray-400 text-xs mb-2 text-center">Game Link</p>
+              <p className="text-white font-mono text-sm font-medium text-center tracking-wide break-all px-2">
+                {gameLink}
               </p>
             </div>
 
@@ -119,14 +125,14 @@ function MultiplayerModal({ isOpen, onClose, gameId, isWaiting, opponentName, pl
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={copyToClipboard}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-200 text-white font-medium hover:scale-[1.02] active:scale-[0.98]"
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-200 text-white font-medium hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 <Copy size={18} />
                 <span className="text-sm">Copy Link</span>
               </button>
               <button
                 onClick={shareGame}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-xl transition-all duration-200 text-white font-medium shadow-lg hover:shadow-purple-500/50 hover:scale-[1.02] active:scale-[0.98]"
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-xl transition-all duration-200 text-white font-medium shadow-lg hover:shadow-purple-500/50 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 <Share2 size={18} />
                 <span className="text-sm">Share</span>
